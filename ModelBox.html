@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        body {
+            height: auto;
+        }
+
+        .test {
+            margin: 20px auto;
+            width: 400px;
+            height: 400px;
+            font-family: sans-serif;
+            font-weight: 700;
+        }
+
+        .image,
+        .info {
+            display: flex;
+            justify-content: center;
+        }
+
+        .image img {
+            max-width: 200px;
+            height: 200px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #999;
+            z-index: 99;
+            display: none;
+            transition: all 1s;
+
+        }
+
+        .overlay.test {
+            display: block;
+        }
+
+        button {
+            padding: 4px 20px;
+        }
+
+        i {
+            position: absolute;
+            top: 16%;
+            right: 10%;
+            font-size: 30px;
+            color: #333;
+            transition: all .5s;
+        }
+
+        i:hover {
+            color: #000;
+        }
+
+        .box-img {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .box-img img {
+            max-width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .person {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Tahoma;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">
+        <div class="image" id="ahmed">
+            <img src="images/person_5.jpg" alt="David Glups">
+        </div>
+        <div class="info">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque et obcaecati facilis perferendis beatae
+                delectus, nisi doloremque corrupti eius sint vel cupiditate hic
+            </p>
+        </div>
+        <div class="image" id="ahmed">
+            <img src="images/person_4.jpg" alt="Jak Slinder">
+        </div>
+        <div class="info">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque et obcaecati facilis perferendis beatae
+                delectus, nisi doloremque corrupti eius sint vel cupiditate hic
+            </p>
+        </div>
+        <div class="image" id="ahmed">
+            <img src="images/testy-1.jpg " alt="Gay Hooks">
+        </div>
+        <div class=" info">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque et obcaecati facilis perferendis beatae
+                delectus, nisi doloremque corrupti eius sint vel cupiditate hic
+            </p>
+        </div>
+
+    </div>
+    <div class="overlay">
+        <i class="fas fa-times"></i>
+        <div class="box-img">
+            <img src="" alt="">
+            <h3 class="person"></h3>
+        </div>
+    </div>
+    <script>
+        let myImages = document.querySelectorAll('.image img'),
+            boxModal = document.querySelector('.overlay'),
+            closeTimes = document.querySelector('.fa-times'),
+            myBoxImg = document.querySelector('.box-img img'),
+            myBoxName = document.querySelector('.person');
+
+
+        myImages.forEach(img => {
+            img.addEventListener('click', () => {
+                let myExistImg = img.getAttribute('src'),
+                    myPersonName = img.getAttribute('alt');
+                boxModal.style.display = "block";
+                myBoxImg.setAttribute('src', myExistImg);
+                myBoxName.innerText = myPersonName
+            })
+        });
+        /*
+        for (var i = 0; i < myImages.length; i++) {
+
+            myImages[i].onclick = function () {
+                var myExistImg   = myImages[i].getAttribute('src');
+                var myPersonName = myImages[i].getAttribute('alt');
+                boxModal.style.display = 'block';
+                myBoxImg.setAttribute('src', myExistImg);
+                myBoxName.innerText = myPersonName
+
+            }
+        }
+        */
+        closeTimes.onclick = () => {
+            boxModal.style.display = 'none'
+        } 
+    </script>
+</body>
+
+</html>
